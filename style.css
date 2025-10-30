@@ -1,3 +1,7 @@
 body{
     border: 1px palevioletred solid;
 }
+
+.book-card{
+    border: 1px seagreen solid;
+}

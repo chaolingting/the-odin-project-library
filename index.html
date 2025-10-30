@@ -14,8 +14,30 @@
 
     <dialog>   
         <form action="/" class="add-new-book">
-            Book name <input type="text">
-        <button type="submit" class="ok">Add</button>   
+            <div>
+                <label for="title" name="title">Title</label>
+                <input type="text" name="title" id="title" value="" required>
+            </div>
+
+            <div>
+                <label for="author" name="author">Author</label>
+                <input type="text" name="author" id="author" value="" required>
+            </div>
+
+            <div>
+                <label for="page" name="page">How many pages?</label>
+                <input type="number" name="page" id="page" value="" required>
+            </div>
+
+            <fieldset>
+                <legend>Have you read it yet?</legend>
+                <label for="read">Yes<input type="radio" name="readStatus" value="read" required id="read"></label>
+                <label for="read">Not yet<input type="radio" name="readStatus" value="notyet" id="read"></label>
+            </fieldset>
+
+
+
+        <button type="submit" value="submit">Add</button>   
         </form>
 
         <button class="close" autofocus>Close</button>
