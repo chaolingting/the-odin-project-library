@@ -41,10 +41,20 @@ function createBookCard(book){
         const readStatusEL = document.createElement('p');
         readStatusEL.textContent = `Status: ${book.read ? "read" : "not yet"}`;
 
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = "remove this book";
+        removeBtn.addEventListener('click', function(){
+            bookCard.remove();
+        });
+
+        const bookId = document.createElement('data-id');
+
+        
         bookCard.appendChild(titleEL);
         bookCard.appendChild(authorEL);
         bookCard.appendChild(pageEL);
         bookCard.appendChild(readStatusEL);
+        bookCard.appendChild(removeBtn);
 
         library.appendChild(bookCard);
 }
