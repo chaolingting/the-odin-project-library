@@ -1,3 +1,4 @@
+const library = document.querySelector(".library");
 // the constructor
 function Book(title, author, page, read){
     this.title = title;
@@ -8,7 +9,7 @@ function Book(title, author, page, read){
 
     this.info = function(){
         const readStatus = this.read ? "read" : "not yet";
-        return `${title} ${author} ${page} pages, ${readStatus} `
+        return `${title} ${author} ${page} pages, ${readStatus}, ${id} `
     };
 
 
@@ -25,29 +26,34 @@ function addBookToLibrary(title, author, page, read){
 }
 
 
+
 function createBookCard(book){
         const bookCard = document.createElement('div');
         bookCard.classList.add('book-card')
 
         const titleEL = document.createElement('p');
-        titleEL.textContent = `Name: ${book.title}`
+        titleEL.textContent = `${book.title}`
 
         const authorEL = document.createElement('p');
-        authorEL.textContent = `Author: ${book.author}`
+        authorEL.textContent = `${book.author}`
 
         const pageEL = document.createElement('p');
         pageEL.textContent = `${book.page} pages`
 
         const readStatusEL = document.createElement('p');
-        readStatusEL.textContent = `Status: ${book.read ? "read" : "not yet"}`;
+        readStatusEL.textContent = `${book.read ? "read" : "not yet"}`;
+        readStatusEL.addEventListener('click', (event) => {
+            book.read = !book.read;
+            readStatusEL.textContent = `${book.read ? "read" : "not yet"}`;
+        })
 
         const removeBtn = document.createElement('button');
-        removeBtn.textContent = "remove this book";
+        removeBtn.textContent = "Remove this book";
         removeBtn.addEventListener('click', function(){
             bookCard.remove();
         });
 
-        const bookId = document.createElement('data-id');
+        bookCard.dataset.bookId = book.id;
 
         
         bookCard.appendChild(titleEL);
@@ -55,18 +61,21 @@ function createBookCard(book){
         bookCard.appendChild(pageEL);
         bookCard.appendChild(readStatusEL);
         bookCard.appendChild(removeBtn);
+        //bookCard.appendChild(bookId);
 
         library.appendChild(bookCard);
 }
 
 function display(){
+    
+    library.replaceChildren();
     myLibrary.forEach((book,index) => {
         createBookCard(book);
     })
 }
 
 
-const library = document.querySelector(".library");
+
 
 //dialog
 const dialog = document.querySelector("dialog");
@@ -102,6 +111,10 @@ form.addEventListener('submit', (e) => {
 });
 
 
+
+addBookToLibrary("1984", "George Orwell", 298, true);
+addBookToLibrary("The Lord of the Rings", "J.R.R Tolkien", 1216, true);
+addBookToLibrary("Animal Farm", "George Orwell", 141, true);
 
 
 
