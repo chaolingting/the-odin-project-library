@@ -1,4 +1,5 @@
 const library = document.querySelector(".library");
+const bookList = document.querySelector(".book-list");
 // the constructor
 function Book(title, author, page, read){
     this.title = title;
@@ -38,20 +39,30 @@ function createBookCard(book){
         authorEL.textContent = `${book.author}`
 
         const pageEL = document.createElement('p');
-        pageEL.textContent = `${book.page} pages`
+        pageEL.textContent = `${book.page}`
 
         const readStatusEL = document.createElement('p');
-        readStatusEL.textContent = `${book.read ? "read" : "not yet"}`;
-        readStatusEL.addEventListener('click', (event) => {
+        readStatusEL.textContent = `${book.read ? "Read" : "Not yet"}`;
+        readStatusEL.style.cursor = "pointer"
+
+        function updateReadStatus(){
+            readStatusEL.textContent = book.read ? "Read" : "Not yet";
+            readStatusEL.style.color = book.read ? "seagreen" : "red";
+        }
+
+        updateReadStatus();
+
+     readStatusEL.addEventListener('click', (event) => {
             book.read = !book.read;
-            readStatusEL.textContent = `${book.read ? "read" : "not yet"}`;
+            updateReadStatus();            
         })
 
         const removeBtn = document.createElement('button');
-        removeBtn.textContent = "Remove this book";
+        removeBtn.textContent = "Remove";
         removeBtn.addEventListener('click', function(){
             bookCard.remove();
         });
+        removeBtn.classList.add('remove')
 
         bookCard.dataset.bookId = book.id;
 
@@ -63,8 +74,11 @@ function createBookCard(book){
         bookCard.appendChild(removeBtn);
         //bookCard.appendChild(bookId);
 
-        library.appendChild(bookCard);
+        
+        bookList.appendChild(bookCard);
 }
+
+
 
 function display(){
     

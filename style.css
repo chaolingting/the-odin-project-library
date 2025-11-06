@@ -1,5 +1,5 @@
 :root{
-    font-size: 15px;
+    font-size: 16px;
 }
 
 *, li, ul{
@@ -12,30 +12,52 @@
 
 
 body{
-    border: 1px palevioletred solid;
+    background-color: rgb(255, 251, 245);
+    font-family: "Domine", serif;
+}
+
+.container{
+    display: grid;
+    margin: auto 3rem;
+}
+
+header{
+    margin: 2rem;
+    color:darkgoldenrod;
 }
 
 .library{
-    margin: 4rem;    
+    margin: 0 4rem 4rem 4rem;    
 }
 
 .row{
+    font-weight: bold;
+    padding: 1rem 0;
+   border-bottom: 1px #222 solid;
+}
+
+.row, .book-card{
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-   
+    grid-template-columns: 2fr 1.5fr 1fr 1fr 1fr;
+    text-align: center;
+    gap: 1rem;
+    align-items: center;
 }
 
 
 .book-card{
-    border: 1px seagreen solid;
-    /*max-width: 300px;*/
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap:24px;
+
+    border-bottom: 1px #222 solid;
+    padding: 1rem 0;
+
 }
 
+
+
+
 .book-card:hover{
-    background-color: peachpuff;
+    background-color: palegoldenrod;
+    
 }
 
 
@@ -45,10 +67,132 @@ body{
 
 button{
     padding: 4px 8px;
-    background-color: peachpuff;
-    border-radius: 4px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0;
     border: none;
     font-size: 1rem;
+    font-family:"Domine", serif ;
+}
+
+button:hover{
+    background-color: palegoldenrod;
+    color:rgb(86, 44, 15);
+    
 }
 
 
+.add{
+    background-color: rgb(86, 44, 15);
+    padding: 1rem 0;
+    margin: auto 4rem;
+    color: white;
+    font-weight: bold;
+
+}
+
+.add:hover{
+    border: 1px rgb(86, 44, 15) solid;
+}
+
+form{
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    width: 500px;
+    padding: 2rem;
+}
+
+form > div,
+fieldset{
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+
+
+dialog{
+    margin: auto;
+    padding: auto;
+    border: 1px solid powderblue;
+    
+}
+
+input, fieldset{
+    padding: 0.4rem;
+    
+}
+
+input[type="radio"]{
+    margin: 0.3rem;
+}
+
+fieldset{
+    border: none;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.form-add{
+    background-color: powderblue;
+    padding: 1rem 0;
+    color: rgb(86, 44, 15) ;
+}
+
+.form-add:hover{
+    border: 1px rgb(86, 44, 15) solid;
+}
+
+.close img{
+    width: 32px;
+    height: 32px;
+}
+
+footer{
+    text-align: right;
+    padding: 2rem;
+    margin-top: 5rem;
+}
+
+footer p{
+    font-size: 0.8rem;
+}
+
+.remove:hover{
+    color: rgb(188, 11, 11);
+}
+
+
+@media screen and (max-width:768px) {
+
+    .container{
+    display: grid;
+    margin: auto 1.2rem;
+    }
+
+    header{
+        margin: 1.5rem 1rem;
+        color:darkgoldenrod;
+    }
+
+    .library{
+        margin: 0 1.1rem 2rem 1.1rem;    
+    }
+
+
+.add{
+    background-color: rgb(86, 44, 15);
+    padding: 1rem 0;
+    margin: auto 1.1rem;
+    color: white;
+    font-weight: bold;
+
+}
+
+.add:hover{
+    border: 1px rgb(86, 44, 15) solid;
+}
+}

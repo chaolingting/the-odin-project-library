@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Library</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
     <main class="container">
+        <header><h1>Library</h1></header>
         <div class="library">
-            <ul class="row">
-                <li>Book Title</li>
-                <li>Author</li>
-                <li>Pages</li>
-                <li>Read Status</li>
+            <div class="row">
+                <p>Book Title</p>
+                <p>Author</p>
+                <p>Pages</p>
+                <p>Read Status</p>
                 
-            </ul>
+            </div>
+            <div class="book-list"></div>
         </div>
 
     <dialog>   
+        <button class="close" autofocus><img src="image/close.svg" alt="close"></button>
         <form action="/" class="add-new-book">
             <div>
                 <label for="title" name="title">Title</label>
@@ -37,21 +43,24 @@
 
             <fieldset>
                 <legend>Have you read it yet?</legend>
-                <label for="read">Yes<input type="radio" name="readStatus" value="read" required id="read"></label>
-                <label for="read">Not yet<input type="radio" name="readStatus" value="notyet" id="read"></label>
+                <label for="read"><input type="radio" name="readStatus" value="read" required id="read">Yes</label>
+                <label for="read"><input type="radio" name="readStatus" value="notyet" id="read">Not yet</label>
             </fieldset>
 
 
 
-        <button type="submit" value="submit">Add</button>   
+        <button type="submit" value="submit" class="form-add">Add</button>   
         </form>
 
-        <button class="close" autofocus>Close</button>
+        
     </dialog> 
+
+    
        <button class="add">Add A New Book</button>
 
 
     </main>
+    <footer><p>made by chaolingting 2025</p></footer>
     <script src="index.js"></script>
 </body>
 </html>
