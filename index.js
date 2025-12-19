@@ -1,20 +1,47 @@
 const library = document.querySelector(".library");
 const bookList = document.querySelector(".book-list");
-// the constructor
-function Book(title, author, page, read){
-    this.title = title;
-    this.author = author;
-    this.page = page;
-    this.read = read;
-    this.id = crypto.randomUUID();
 
-    this.info = function(){
-        const readStatus = this.read ? "read" : "not yet";
-        return `${title} ${author} ${page} pages, ${readStatus}, ${id} `
-    };
+class Book{
+    constructor(title, author, page, read){
+        this.title = title;
+        this.author = author;
+        this.page = page;
+        this.read = read;
+        this.id = crypto.randomUUID();
+    }
+
+        info(){
+            const readStatus = this.read ? "read" : "not yet";
+            return`${title} ${author} ${page} pages, ${readStatus}, ${id}`
+        }
 
 
-};
+}
+
+
+class Library{
+    constructor(){
+        this.book = []
+    }
+}
+
+
+
+// // the constructor
+// function Book(title, author, page, read){
+//     this.title = title;
+//     this.author = author;
+//     this.page = page;
+//     this.read = read;
+//     this.id = crypto.randomUUID();
+
+//     this.info = function(){
+//         const readStatus = this.read ? "read" : "not yet";
+//         return `${title} ${author} ${page} pages, ${readStatus}, ${id} `
+//     };
+
+
+// };
 
 const myLibrary = [];
 
