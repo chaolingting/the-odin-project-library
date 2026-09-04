@@ -14,11 +14,16 @@
 body{
     background-color: rgb(255, 251, 245);
     font-family: "Domine", serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
 }
 
 .container{
-    display: grid;
-    margin: auto 3rem;
+    /* display: grid; */
+    margin: 0 3rem;
+    flex: 1;
 }
 
 header{
@@ -86,7 +91,7 @@ button:hover{
 
 .add{
     background-color: rgb(86, 44, 15);
-    padding: 1rem 0;
+    padding: 1rem;
     margin: auto 4rem;
     color: white;
     font-weight: bold;
@@ -154,7 +159,7 @@ fieldset{
 footer{
     text-align: right;
     padding: 2rem;
-    margin-top: 5rem;
+   
 }
 
 footer p{
@@ -169,7 +174,7 @@ footer p{
 @media screen and (max-width:768px) {
 
     .container{
-    display: grid;
+    /* display: grid; */
     margin: auto 1.2rem;
     }
 
@@ -185,7 +190,7 @@ footer p{
 
 .add{
     background-color: rgb(86, 44, 15);
-    padding: 1rem 0;
+    padding: 1rem ;
     margin: auto 1.1rem;
     color: white;
     font-weight: bold;
@@ -196,3 +201,19 @@ footer p{
     border: 1px rgb(86, 44, 15) solid;
 }
 }
+
+
+#author:user-valid,
+#title:user-valid,
+#page:user-valid {
+    border: 1px solid green;
+}
+
+#author:user-invalid,
+#title:user-invalid,
+#page:user-invalid {
+    border: 1px solid red;
+
+}
+
+

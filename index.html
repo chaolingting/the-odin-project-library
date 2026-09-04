@@ -33,7 +33,7 @@
 
             <div>
                 <label for="author" name="author">Author</label>
-                <input type="text" name="author" id="author" value="" required>
+                <input type="text" name="author" id="author" value="" minlength="2" required>
             </div>
 
             <div>
@@ -43,8 +43,8 @@
 
             <fieldset>
                 <legend>Have you read it yet?</legend>
-                <label for="read"><input type="radio" name="readStatus" value="read" required id="read">Yes</label>
-                <label for="read"><input type="radio" name="readStatus" value="notyet" id="read">Not yet</label>
+                <label for="read-yes"><input type="radio" name="readStatus" value="read" required id="read-yes">Yes</label>
+                <label for="read-no"><input type="radio" name="readStatus" value="notyet" id="read-no">Not yet</label>
             </fieldset>
 
 

@@ -1,5 +1,7 @@
 const library = document.querySelector(".library");
 const bookList = document.querySelector(".book-list");
+
+
 // the constructor
 function Book(title, author, page, read){
     this.title = title;
@@ -10,9 +12,8 @@ function Book(title, author, page, read){
 
     this.info = function(){
         const readStatus = this.read ? "read" : "not yet";
-        return `${title} ${author} ${page} pages, ${readStatus}, ${id} `
+        return `${this.title} ${this.author} ${this.page} pages, ${readStatus}, ${this.id} `
     };
-
 
 };
 
@@ -60,6 +61,11 @@ function createBookCard(book){
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Remove";
         removeBtn.addEventListener('click', function(){
+            const bookIndex = myLibrary.findIndex(b => b.id === book.id);
+            if(bookIndex !== -1){
+                myLibrary.splice(bookIndex, 1);
+
+            }
             bookCard.remove();
         });
         removeBtn.classList.add('remove')
@@ -93,7 +99,7 @@ function display(){
 
 //dialog
 const dialog = document.querySelector("dialog");
-const addBtn = document.querySelector("dialog + .add");
+const addBtn = document.querySelector(".add");
 const closeBtn = document.querySelector("dialog .close");
 
 //form
@@ -109,15 +115,15 @@ const form = document.querySelector("form");
 form.addEventListener('submit', (e) => {
     e.preventDefault();
         console.log("Add clicked, form submitted!");
-        dialog.close();
 
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const page = document.querySelector('#page').value;
-    const read = document.querySelector('#read').checked;
+    const readYes = document.querySelector('#read-yes').checked;
+    // const readNo = document.querySelector('#read-no').checked;
 
 
-    addBookToLibrary(title, author, page, read);
+    addBookToLibrary(title, author, page, readYes);
 
     form.reset(); 
     dialog.close();
@@ -131,5 +137,16 @@ addBookToLibrary("The Lord of the Rings", "J.R.R Tolkien", 1216, true);
 addBookToLibrary("Animal Farm", "George Orwell", 141, true);
 
 
+const authorInput = document.querySelector('#author');
 
+    //js validation
+    authorInput.addEventListener("input", () =>{
+        authorInput.setCustomValidity("");
+
+        if(authorInput.validity.tooShort) {
+            authorInput.setCustomValidity("Author name is too short. Please enter at least 2 characters!")
+        } else {
+            authorInput.setCustomValidity("");
+        }
+    })
 
