@@ -1,4 +1,4 @@
-const library = document.querySelector(".library");
+const libraryEl = document.querySelector(".library");
 const bookList = document.querySelector(".book-list");
 
 class Book{
@@ -12,7 +12,7 @@ class Book{
 
         info(){
             const readStatus = this.read ? "read" : "not yet";
-            return`${title} ${author} ${page} pages, ${readStatus}, ${id}`
+            return`${this.title} ${this.author} ${this.page} pages, ${readStatus}, ${this.id}`
         }
 
 
@@ -21,7 +21,17 @@ class Book{
 
 class Library{
     constructor(){
-        this.book = []
+        this.books = []
+    }
+
+    addBookToLibrary(title, author, page, read){
+        const newBook = new Book(title, author, page, read);
+        this.books.push(newBook);
+        createBookCard(newBook);
+    }
+
+    getBooks(){
+            return this.books;
     }
 }
 
@@ -43,15 +53,15 @@ class Library{
 
 // };
 
-const myLibrary = [];
+// const myLibrary = [];
 
 
-function addBookToLibrary(title, author, page, read){
-    const newBook = new Book(title, author, page, read);
-    myLibrary.push(newBook);
+// function addBookToLibrary(title, author, page, read){
+//     const newBook = new Book(title, author, page, read);
+//     myLibrary.push(newBook);
 
-    createBookCard(newBook);
-}
+//     createBookCard(newBook);
+// }
 
 
 
@@ -110,9 +120,10 @@ function createBookCard(book){
 function display(){
     
     library.replaceChildren();
-    myLibrary.forEach((book,index) => {
+    library.getBooks.forEach((book,index) => {
         createBookCard(book);
     })
+    // myLibrary.forEach()
 }
 
 
@@ -144,7 +155,7 @@ form.addEventListener('submit', (e) => {
     const read = document.querySelector('#read').checked;
 
 
-    addBookToLibrary(title, author, page, read);
+    library.addBookToLibrary(title, author, page, read);
 
     form.reset(); 
     dialog.close();
@@ -152,10 +163,17 @@ form.addEventListener('submit', (e) => {
 });
 
 
+const library = new Library();
+// const book = new Book("1984", "George Orwell", 298, true);
+library.addBookToLibrary("1984", "George Orwell", 298, false);
 
-addBookToLibrary("1984", "George Orwell", 298, true);
-addBookToLibrary("The Lord of the Rings", "J.R.R Tolkien", 1216, true);
-addBookToLibrary("Animal Farm", "George Orwell", 141, true);
+library.addBookToLibrary("The Lord of the Rings", "J.R.R Tolkien", 1216, true);
+library.addBookToLibrary("Animal Farm", "George Orwell", 141, true);
+
+
+// addBookToLibrary("1984", "George Orwell", 298, true);
+// addBookToLibrary("The Lord of the Rings", "J.R.R Tolkien", 1216, true);
+// addBookToLibrary("Animal Farm", "George Orwell", 141, true);
 
 
 
